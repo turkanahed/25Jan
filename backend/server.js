@@ -9,6 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 const { Schema } = mongoose;
+
 const FlowersSchema = new Schema(
     {
         url: {
@@ -41,17 +42,21 @@ app.get("/flowers", (req, res) => {
 
 //add product
 app.post("/flowers", (req, res) => {
-    const data=req.body;
-    console.log(data);
-    let flower = new Flowers(data);
-    flower.save();
+    const newFlowers = new Flowers({
+        name: req.body.name,
+        price: req.body.price,
+        url: req.body.url
+    })
+    // console.log(data);
+    // let flower = new Flowers(data);
+    newFlowers.save();
     res.send({ message: "Successfully" });
 });
 
 //delete product
 app.delete("/flowers/:id", (req, res) => {
     const { id } = req.params;
-    Flowers.findByIdAndDelete(id, err => {
+    Flowers.findByIdAndDelete(id, (err) => {
         if (!err) {
             res.send("Successfully deleted");
         } else {
@@ -61,6 +66,7 @@ app.delete("/flowers/:id", (req, res) => {
 });
 
 mongoose.set('strictQuery', false);
+
 const PORT = process.env.PORT;
 const DB = process.env.DB_URL.replace("<password>", process.env.DB_PASSWORD);
 

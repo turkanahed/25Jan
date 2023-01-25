@@ -6,7 +6,7 @@ export const CardContainer = styled.div`
         width: 350px;
         /* height: 380px; */
         display: inline-block;
-        margin-right: 50px;
+        margin: 40px 20px;
         text-align: center;
         .card-img{
         width: 100%;

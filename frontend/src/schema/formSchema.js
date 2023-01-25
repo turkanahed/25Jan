@@ -5,7 +5,7 @@ export const loginformSchema=yup.object().shape({
     name:yup.string().required("name is required"),
     price:yup
             .number("please should be a number")
-            .required("name is required")
+            .required("price is required")
             .positive("please should be a positive")
             .integer("please should be a integer")
 })
