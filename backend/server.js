@@ -14,15 +14,15 @@ const FlowersSchema = new Schema(
     {
         url: {
             type: String,
-            required: [true, "Please enter product url!"]
+            // required: [true, "Please enter product url!"]
         },
         name: {
             type: String,
-            required: [true, "Please enter product name!"]
+            // required: [true, "Please enter product name!"]
         },
         price: {
-            type: String,
-            required: [true, "Please enter product price!"]
+            type: Number,
+            // required: [true, "Please enter product price!"]
         },
     },
     { timestamps: true }
@@ -42,7 +42,7 @@ app.get("/flowers", (req, res) => {
 
 //add product
 app.post("/flowers", (req, res) => {
-    const newFlowers = new Flowers({
+    let newFlowers = new Flowers({
         name: req.body.name,
         price: req.body.price,
         url: req.body.url

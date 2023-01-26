@@ -1,7 +1,7 @@
 import React from 'react'
 import { CardContainer } from './style'
 
-const Card = ({ name, price, img, item, handleDelete }) => {
+const Card = ({ name, price, img, handleDelete , id}) => {
     return (
         <CardContainer>
             <div className="MyCard">
@@ -12,7 +12,7 @@ const Card = ({ name, price, img, item, handleDelete }) => {
                     <h2>{name}</h2>
                     <p>{price}</p>
                 </div>
-                <button onClick={() => handleDelete(item._id)}>Delete</button>
+                <button onClick={() => handleDelete(id)}>Delete</button>
             </div>
         </CardContainer>
     )
